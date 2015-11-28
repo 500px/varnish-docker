@@ -1,6 +1,6 @@
 FROM        ubuntu:14.04.2
-MAINTAINER  Love Nyberg "love.nyberg@lovemusic.se"
-ENV REFRESHED_AT 2014-10-18
+MAINTAINER  500px "chris@500px.com"
+ENV REFRESHED_AT 2015-11-27
 
 # Update the package repository and install applications
 RUN apt-get update -qq && \
@@ -19,7 +19,7 @@ ENV VARNISH_PORT 80
 EXPOSE 80
 
 # Expose volumes to be able to use data containers
-VOLUMES ["/var/lib/varnish", "/etc/varnish"]
+VOLUME ["/var/lib/varnish", "/etc/varnish"]
 
 ADD start.sh /start.sh
 CMD ["/start.sh"]

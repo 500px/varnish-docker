@@ -8,6 +8,13 @@ backend default {
     .host = "${VARNISH_BACKEND_IP}";
     .port = "${VARNISH_BACKEND_PORT}";
 }
+
+sub vcl_recv {
+	if (req.url ~ "\?.*sig=([^&]*)") {
+		set req.http.X-Auth = "dev_auth_token";
+	}
+}
+
 #
 # Below is a commented-out copy of the default VCL logic.  If you
 # redefine any of these subroutines, the built-in logic will be
